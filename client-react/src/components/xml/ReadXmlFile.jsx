@@ -1,9 +1,8 @@
-import React, {Component} from "react";
+import React, { Component } from 'react';
 import axios from "axios";
 
-class ReadXML extends Component
-{
-
+class ReadXmlFile extends Component {
+    
     submitFile = async (e) => {
         e.preventDefault();
         document.getElementById('submitbtn').disabled = true;
@@ -47,4 +46,4 @@ class ReadXML extends Component
     }
 }
 
-export default ReadXML;
+export default ReadXmlFile;
