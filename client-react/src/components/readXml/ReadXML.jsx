@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import axios from "axios";
 
-class ReadXml extends Component
+class ReadXML extends Component
 {
 
     submitFile = async (e) => {
@@ -47,4 +47,4 @@ class ReadXml extends Component
     }
 }
 
-export default ReadXml;
+export default ReadXML;
