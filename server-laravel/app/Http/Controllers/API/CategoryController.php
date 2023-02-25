@@ -30,7 +30,7 @@ class CategoryController extends Controller
         ]);
 
     }
-    public function category($subName)
+    public function subcategory($subName)
     {
         $subcategory = Category::where('cate_name', $subName)->with('subcategory')->where('parent_cate_id', 0)->get();
 
