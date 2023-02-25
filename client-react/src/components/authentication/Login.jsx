@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import FormInput from "./FormInput";
+import InputForm from "./InputForm";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEyeSlash, faEye } from "@fortawesome/free-solid-svg-icons";
 import Swal from 'sweetalert2';
@@ -103,7 +103,7 @@ export default function Login(){
                 <h2 className="text-3xl font-norma pt-10">Effettua il login</h2>
                 <div className="mt-6">
                     {inputs.map((input) => (
-                        <FormInput key={input.id} {...input} value={values[input.name]} onChange={onChange} />
+                        <InputForm key={input.id} {...input} value={values[input.name]} onChange={onChange} />
                     ))}
                     <div className="text-end text-sm underline decoration-1">
                         <Link to={'/forgot-password'}>Password dimenticata?</Link>
