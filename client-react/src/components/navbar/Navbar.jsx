@@ -103,6 +103,14 @@ function Nav(){
             </div>
             <div className="hidden lg:flex items-center lg:justify-between lg:container lg:pb-2 lg:px-3">
                 <LogoDesktop />
+                <div className="lg:flex lg:ml-8 hidden md:space-x-8">
+                    <a href="#" className="flex px-4 py-2 text-green-700 items-center w-56">
+                        <div className="text-right text-xs pr-1 inline-flex">TROVA IL NEGOZIO PRÉNATAL PIÙ VICINO A TE</div>
+                        <div>
+                            <FontAwesomeIcon icon={faLocationDot} className="pl-1 text-2xl" />
+                        </div>
+                    </a>
+                </div>
                 <div className="hidden lg:flex lg:p-2 lg:border-b lg:border-black lg:items-center">
                     <input type={'text'} onClick={handleClick1} placeholder="Che prodotto stai cercando?" className="lg:focus:outline-none font-semibold placeholder:text-black xl:w-[35rem] lg:w-[20rem]" />
                     <button type="submit" className="float-right">
