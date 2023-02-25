@@ -14,7 +14,6 @@ const Modal = () => {
                     <div className='bg-white'>
                         <div className='grid grid-cols-4'>
                             {subcategory}
-                            {/* Eri */}
                         </div>
                     </div>
                 </div> 

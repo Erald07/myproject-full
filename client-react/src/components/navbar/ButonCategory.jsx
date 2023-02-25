@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { CategoryContext } from "./contextCategory/CategoryContext";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretUp } from "@fortawesome/free-solid-svg-icons";
-import DropdownCategory from "./DropdownCategory";
 
 
 const ButonCategory = props => {

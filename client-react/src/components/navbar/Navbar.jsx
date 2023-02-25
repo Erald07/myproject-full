@@ -9,8 +9,8 @@ import Swal from "sweetalert2";
 import LogoMobile from "../logo/LogoMobile";
 import LogoDesktop from "../logo/LogoDesktop";
 
-import CategoriesDesktop from "./CategoryDesktop";
-import CategoriesMobile from "./CategoryMobile";
+import CategoriesDesktop from "./category/CategoryDesktop";
+import CategoriesMobile from "./category/CategoryMobile";
 
 function Nav(){
 

@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretUp, faCircleInfo } from "@fortawesome/free-solid-svg-icons";
-import ButonCategory from "./ButonCategory";
-import DropdownCategory from "./DropdownCategory";
-import ImageDropdown from './ImageDropdown';
-import { CategoryContext } from './contextCategory/CategoryContext';
+import ButonCategory from "../ButonCategory";
+import DropdownCategory from "../DropdownCategory";
+import ImageDropdown from '../ImageDropdown';
+import { CategoryContext } from '../contextCategory/CategoryContext';
 
 // const Button = props => {
 //     return(<button className={props.className} onClick={props.onClick}>{props.name}</button>)
