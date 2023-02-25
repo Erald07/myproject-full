@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import { useParams } from "react-router-dom";
-import Items1 from "./Items1";
-import "./Styleee.css";
+import Items from "./Items";
+import "./Style.css";
 
 function Index1(){
     const [items, setItems] = useState([]);
@@ -21,7 +21,7 @@ function Index1(){
     return(
         <>
         <div>
-            <Items1 data={items} />
+            <Items data={items} />
         </div>
         </>
     );

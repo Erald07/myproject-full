@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import { useParams } from "react-router-dom";
 import Items from "./Items";
-import "./Styleee.css";
+import "./Style.css";
 
 function Index2(){
     const [items, setItems] = useState([]);
