@@ -1,9 +1,9 @@
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { CategoryContext } from "./ContextCategory/CategoryContext";
+import { CategoryContext } from "./contextCategory/CategoryContext";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretUp } from "@fortawesome/free-solid-svg-icons";
-import ModalSubCategory from "./ModalSubCategory";
+import DropdownCategory from "./DropdownCategory";
 
 
 const ButonCategory = props => {
@@ -37,4 +37,4 @@ const ButonCategory = props => {
     )
 }
 
-export default ButonCategory
+export default ButonCategory;

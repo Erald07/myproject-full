@@ -4,10 +4,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationDot, faMagnifyingGlass, faBagShopping, faUser, faShoppingBag, faTimes, faAngleRight, faAngleLeft, faCircleInfo} from "@fortawesome/free-solid-svg-icons";
 import { NavLink, Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import SliderNavbar from "./SliderNavbar";
+// import SliderNavbar from "./SliderNavbar";
 import Swal from "sweetalert2";
-import CategoriesDesktop from "./CategoriesDesktop";
-import CategoriesMobile from "./CategoriesMobile";
+
+import CategoriesDesktop from "./CategoryDesktop";
+import CategoriesMobile from "./CategoryMobile";
 
 function Nav(){
 
@@ -68,7 +69,7 @@ function Nav(){
 
     return (
         <>
-        <SliderNavbar />
+        {/* <SliderNavbar /> */}
         <header className="container justify-between">
             <div className="bg-primary lg:bg-white container md:mx-auto h-12 md:h-16 lg:h-auto flex items-center justify-between lg:px-3 px-5 relative">
                 <div className="-mx-2 lg:hidden flex flex-grow flex-shrink flex-1 items-center md:justify-center">

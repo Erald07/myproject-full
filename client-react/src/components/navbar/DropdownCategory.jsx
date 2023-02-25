@@ -1,7 +1,7 @@
 
 import React, {useState, useContext} from "react";
-import { CategoryContext } from "./ContextCategory/CategoryContext";
-import ItemModal from "./ItemModal";
+import { CategoryContext } from "./contextCategory/CategoryContext";
+import ImageDropdown from "./ImageDropdown";
 
 const Modal = () => {
 
@@ -19,7 +19,7 @@ const Modal = () => {
                     </div>
                 </div> 
                 <div className='shrink-0 w-1/4'>
-                    <ItemModal />
+                    <ImageDropdown />
                 </div>
             </div>
         </div> 

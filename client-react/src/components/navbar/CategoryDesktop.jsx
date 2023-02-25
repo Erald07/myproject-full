@@ -3,10 +3,9 @@ import { useNavigate, Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretUp, faCircleInfo } from "@fortawesome/free-solid-svg-icons";
 import ButonCategory from "./ButonCategory";
-import Categories from './Categories';
-import ModalSubCategory from "./ModalSubCategory";
-import ItemModal from './ItemModal';
-import { CategoryContext } from './ContextCategory/CategoryContext';
+import DropdownCategory from "./DropdownCategory";
+import ImageDropdown from './ImageDropdown';
+import { CategoryContext } from './contextCategory/CategoryContext';
 
 // const Button = props => {
 //     return(<button className={props.className} onClick={props.onClick}>{props.name}</button>)
@@ -100,7 +99,7 @@ const App = () => {
             {categoriesDesktop} 
         </div>
         <div className='hidden lg:block border border-gray-200 border-solid'></div>
-        {count === 1 ? <ModalSubCategory /> : ""}
+        {count === 1 ? <DropdownCategory /> : ""}
         {count === 2 ? navigate(`/categoria-prodotto/${getCategory}`) : ""}
 
         </CategoryContext.Provider>

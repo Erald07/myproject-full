@@ -1,5 +1,5 @@
 import React, {useState, useContext} from "react";
-import { CategoryContext } from "./ContextCategory/CategoryContext";
+import { CategoryContext } from "./contextCategory/CategoryContext";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
 
