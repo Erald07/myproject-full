@@ -7,9 +7,6 @@ import DropdownCategory from "../DropdownCategory";
 import ImageDropdown from '../ImageDropdown';
 import { CategoryContext } from '../contextCategory/CategoryContext';
 
-// const Button = props => {
-//     return(<button className={props.className} onClick={props.onClick}>{props.name}</button>)
-// }
 const App = () => {
 
     const [count, setCount] = useState(0);
