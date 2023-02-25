@@ -13,6 +13,10 @@ Route::get('/categories/{subName}', [CategoryController::class, 'subcategory']);
 Route::post('/register-user', [UserController::class, 'registerUser']);
 Route::post('/login-user', [UserController::class, 'loginUser']);
 
+Route::middleware(['auth:sanctum'])->group(function () {
+    Route::post('/logout', [UserController::class, 'logout']);
+});
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
