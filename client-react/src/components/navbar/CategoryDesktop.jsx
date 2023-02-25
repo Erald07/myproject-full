@@ -48,8 +48,6 @@ const App = () => {
 
     },[getCategory],[getImage]);
 
-    // console.log(getSubCategory[0]);
-
     var subcategory = "";
     subcategory = getSubCategory[0]?.subcategory?.map( (sub1, i) => {
         return(
@@ -92,7 +90,6 @@ const App = () => {
         );
     });
 
-    console.log(count);
     return( 
         <CategoryContext.Provider value={{count, setCount, getSubCategory, setSubCategory, setIsShown, setCategory, subcategory, getImage}}>
         <div className="container mb-1">
