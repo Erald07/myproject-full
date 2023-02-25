@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight, faAngleLeft, faCircleInfo} from "@fortawesome/free-solid-svg-icons";
+import ElementEmptyCategory from "./ElementEmptyCategory";
+import ElementHasCategory from "./ElementHasCategory";
 
 function CategoriesMobile(){
     const [state, setState] = useState([]);
@@ -90,13 +92,7 @@ function CategoriesMobile(){
                                         return(
                                             <React.Fragment key={j}>
                                             {isEmpty(subcategory1.subcategory) ? 
-                                            <li className="nav-item border-gray-300 border-t">
-                                                <Link className="nav-links py-5 w-full flex justify-between font-semibold px-6" to={`categoria-prodotto/${subcategory1.cate_name}`}>
-                                                    <div className="lowercase first-letter:capitalize" >
-                                                        {subcategory1.cate_name}
-                                                    </div>
-                                                </Link>
-                                            </li>
+                                            <ElementEmptyCategory key={j} link={`categoria-prodotto/${subcategory1?.cate_name}`} name={subcategory1?.cate_name} isEmpty={subcategory1?.subcategory}/>
                                             :
                                             <li className="nav-item border-gray-300 border-t" onClick={() =>{subCategoryHandler(subcategory1.cate_name)}}>
                                                 <div className="nav-links py-5 w-full flex justify-between font-semibold px-6" onClick={handleClick3}>
@@ -108,19 +104,12 @@ function CategoriesMobile(){
                                                                     <div className="pb-3">
                                                                         <FontAwesomeIcon icon={faAngleLeft} className="text-primary float-left p-1 text-xl px-6" onClick={()=>Close3()}/>
                                                                         <Link to={`categoria-prodotto/${getSubCategory[0]?.cate_name}/${getSubSubCategory[0]?.cate_name}`} className="text-primary justify-center text-center font-[700] uppercase text-lg pb-5">{getSubSubCategory[0]?.cate_name}</Link>
-                                                                    </div>
+                                                                    </div>              
                                                                     {getSubSubCategory[0]?.subcategory?.map( (subcategory2, k) => {
                                                                             return(
                                                                                 <React.Fragment key={k}>   
                                                                                     {isEmpty(subcategory2.subcategory) ? 
-                                                                                    <li key={k} className="nav-item border-gray-300 border-t">
-                                                                                        <Link className="nav-links py-5 w-full flex justify-between font-semibold px-6" to={`categoria-prodotto/${subcategory1.cate_name}/${subcategory2.cate_name}`}>
-                                                                                            <div className="lowercase first-letter:capitalize" >
-                                                                                                {subcategory2.cate_name}
-                                                                                            </div>
-                                                                                            {isEmpty(subcategory2.subcategory) ? '' : <FontAwesomeIcon icon={faAngleRight} className="text-primary float-right py-1" />}
-                                                                                        </Link>
-                                                                                    </li>
+                                                                                    <ElementEmptyCategory key={k} link={`categoria-prodotto/${subcategory1?.cate_name}/${subcategory2?.cate_name}`} name={subcategory2?.cate_name} isEmpty={subcategory2?.subcategory}/>
                                                                                     :
                                                                                     <li className="nav-item border-gray-300 border-t" onClick={() =>{subSubCategoryHandler(subcategory2?.cate_name)}}>
                                                                                         <div className="nav-links py-5 w-full flex justify-between font-semibold px-6" onClick={handleClick4}>
@@ -136,14 +125,7 @@ function CategoriesMobile(){
                                                                                                             {getSubSubSubCategory[0]?.subcategory.map((subcategory3, l) => {
                                                                                                                 return(
                                                                                                                     <React.Fragment key={l}>
-                                                                                                                    <li className="nav-item border-gray-300 border-t">
-                                                                                                                        <Link className="nav-links py-5 w-full flex justify-between font-semibold px-6" to={`categoria-prodotto/${subcategory1.cate_name}/${subcategory2.cate_name}/${subcategory3.cate_name}`}>
-                                                                                                                            <div className="lowercase first-letter:capitalize" >
-                                                                                                                                {subcategory3.cate_name}
-                                                                                                                            </div>
-                                                                                                                            {isEmpty(subcategory3.subcategory) ? '' : <FontAwesomeIcon icon={faAngleRight} className="text-primary float-right py-1" />}
-                                                                                                                        </Link>
-                                                                                                                    </li>
+                                                                                                                        <ElementEmptyCategory key={l} link={`categoria-prodotto/${subcategory1?.cate_name}/${subcategory2?.cate_name}/${subcategory3?.cate_name}`} name={subcategory3?.cate_name} isEmpty={subcategory3?.subcategory}/>
                                                                                                                     </React.Fragment>
                                                                                                                 );
                                                                                                             })}
@@ -165,7 +147,7 @@ function CategoriesMobile(){
                                                     </div>
                                                     {isEmpty(subcategory1.subcategory) ? '' : <FontAwesomeIcon icon={faAngleRight} className="text-primary float-right py-1" />}
                                                 </div>
-                                            </li>
+                                            </li> 
                                             }   
                                             </React.Fragment>   
                                         );
