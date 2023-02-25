@@ -13,6 +13,12 @@ Route::get('/categories/{subName}', [CategoryController::class, 'subcategory']);
 Route::post('/register-user', [UserController::class, 'registerUser']);
 Route::post('/login-user', [UserController::class, 'loginUser']);
 
+Route::get('/categoria-prodotto/{cateName}', [ItemController::class, 'index1']);
+Route::get('/categoria-prodotto/{cateName}/{subCateName}', [ItemController::class, 'index2']);
+Route::get('/categoria-prodotto/{cateName}/{subCateName}/{subSubCateName}', [ItemController::class, 'index3']);
+Route::get('/categoria-prodotto/{cateName}/{subCateName}/{subSubCateName}/{subSubSubCateName}', [ItemController::class, 'index4']);
+
+
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('/logout', [UserController::class, 'logout']);
 });
