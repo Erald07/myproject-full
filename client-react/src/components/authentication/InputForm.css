@@ -26,8 +26,8 @@ input:invalid[focused="true"] ~ p{
     border-radius: 15px;
     width: 210px;
     float: right;
-    position: relative;
-    transform: translateY(-10rem);
+    position: absolute;
+    transform: translate(10rem, -12rem);
 }
 
 .validation div{
