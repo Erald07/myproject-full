@@ -11,18 +11,18 @@ export default function Items(props){
     const [itemOffset, setItemOffset] = useState(0);
     const itemsPerPage = 12;
 
-    const kot = useParams();
+    const params = useParams();
 
     useEffect( () => {
         const curr = parseInt(sessionStorage.getItem("page"));
         const endOffset = curr + itemsPerPage;
         setCurrentItems(data?.slice(curr, endOffset));
         setPageCount(Math.ceil(data?.length / itemsPerPage));
-        if(kot.getcate !== window.sessionStorage.getItem("cate_name", kot.getcate)){
+        if(params.getcate !== window.sessionStorage.getItem("cate_name", params.getcate)){
             window.sessionStorage.setItem("page", 0);
         }
-        window.sessionStorage.setItem("cate_name", kot.getcate);
-    },[kot, itemOffset, itemsPerPage, data]);
+        window.sessionStorage.setItem("cate_name", params.getcate);
+    },[params, itemOffset, itemsPerPage, data]);
 
     // Invoke when user click to request another page.
     const handlePageClick = (event) => {
