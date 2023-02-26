@@ -18,7 +18,12 @@ const Modal = () => {
                     </div>
                 </div> 
                 <div className='shrink-0 w-1/4'>
-                    <ImageDropdown />
+                    <div className="bg-gray-100 pb-10">
+                        <h2 className='uppercase pt-8 pl-6 font-bold text-sm pb-2'>in evidenza</h2>
+                        <div className="max-w-[270px] h-auto mx-6">
+                            <ImageDropdown />
+                        </div>
+                    </div>
                 </div>
             </div>
         </div> 
