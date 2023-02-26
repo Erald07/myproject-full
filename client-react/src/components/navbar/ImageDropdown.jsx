@@ -7,9 +7,10 @@ const ItemModal = () => {
     const {  getImage } = useContext(CategoryContext);
 
     return(
-        <div className="bg-gray-100 pb-10">
-            <h2 className='uppercase pt-8 pl-6 font-bold text-sm pb-2'>in evidenza</h2>
-            <div className="max-w-[270px] h-auto mx-6">
+        // <div className="bg-gray-100 pb-10">
+        //     <h2 className='uppercase pt-8 pl-6 font-bold text-sm pb-2'>in evidenza</h2>
+            // <div className="max-w-[270px] h-auto mx-6">
+            <>
                 <div className="translate-y-6 -translate-x-1 flex">
                     <div className="bg-primary text-white text-center w-16 absolute">
                         <p>-{Math.round(100-((getImage?.sale_price*100)/(getImage?.price)))}%</p>
@@ -55,8 +56,9 @@ const ItemModal = () => {
                     <p className="uppercase text-sm font-light">{getImage?.marche}</p>
                     <p className="text-base leading-4 first-letter:capitalize">{getImage?.title}</p>
                 </div>
-            </div>
-        </div> 
+                </>
+            // </div>
+        // </div> 
     );
 }
 
