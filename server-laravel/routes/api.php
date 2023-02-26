@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\XmlController;
 use App\Http\Controllers\API\CategoryController;
 use App\Http\Controllers\API\UserController;
+use App\Http\Controllers\API\ItemController;
 
 Route::post('/read-xml', [XmlController::class, 'index']);
 Route::get('/categories', [CategoryController::class, 'index']);
