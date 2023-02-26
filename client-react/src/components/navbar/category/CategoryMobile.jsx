@@ -4,6 +4,7 @@ import ElementHasCategory from "./ElementHasCategory";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
 import ImageDropdown from "../ImageDropdown";
+import { CategoryContext } from "../contextCategory/CategoryContext";
 
 function CategoriesMobile(){
     const [state, setState] = useState([]);
@@ -92,7 +93,7 @@ function CategoriesMobile(){
                                 : 
                                 <ElementHasCategory 
                                     key={subcategory1?.cate_id}
-                                    onClick={function(){subCategoryHandler(subcategory1.cate_name); handleClick3(); }}
+                                    onClick={function(){subCategoryHandler(subcategory1?.cate_name); handleClick3(); }}
                                     name={subcategory1?.cate_name}
                                     className={click3 ? "pt-5 min-h-screen z-20 flex-col lg:hidden h-full w-full max-w-2xl absolute bg-white top-0 left-0 z-1 opacity-100" : "nav-menu flex flex-col h-full w-80 absolute -left-full top-0 opacity-100"}
                                     to={`categoria-prodotto/${getSubCategory[0]?.cate_name}/${getSubSubCategory[0]?.cate_name}`}
@@ -124,122 +125,20 @@ function CategoriesMobile(){
                                     })}
                                 />
                             }
+                            <CategoryContext.Provider value={{getImage}}>
+                                <div className="bg-gray-100 min-h-fit pb-10 hidden last:block">
+                                    <div className="max-w-[270px] h-auto mx-auto pt-6">
+                                        <ImageDropdown />
+                                    </div>
+                                </div>
+                            </CategoryContext.Provider>
                             </React.Fragment>
                         );  
                     })} 
-                >
-                {/* {getSubCategory[0]?.subcategory?.map((getItem, k) => {
-                    return(
-                    <div className="bg-gray-100 min-h-fit pb-10">
-                        <div className="max-w-[270px] h-auto mx-auto pt-6">
-                            <div className="translate-y-6 -translate-x-1 flex">
-                                <div className="bg-primary text-white text-center w-16 absolute">
-                                    <p>-{Math.round(100-((getImage.sale_price*100)/(getImage.price)))}%</p>
-                                </div> 
-                                {getImage.vip_price ? 
-                                    <div className="bg-secondary text-white text-center w-16 absolute mt-8">
-                                        <p>-{Math.round(100-((getImage.vip_price*100)/(getImage.price)))}%</p>
-                                    </div>
-                                    :
-                                    ""
-                                }
-                            </div>
-                            <div className="bg-white border border-solid border-gray-300">
-                                <img src={getImage.image_link} alt="" />
-                            </div>
-                            <div className="py-2 flex items-center justify-between">
-                                <div className="text-left text-primary">
-                                    {getImage.price ? 
-                                        <h6 className="line-through font-extralight text-sm">&#8364; {getImage.price}</h6>
-                                        :
-                                        ""
-                                    }
-                                    {getImage.sale_price ?
-                                        <h5 className="font-medium text-base">&#8364; {getImage.sale_price}</h5>
-                                        :
-                                        ""
-                                    }
-                                </div>
-                                {getImage.vip_price ? 
-                                    <div className="border-solid border border-secondary w-[160px]"></div>
-                                    :
-                                    ""
-                                }
-                                <div className="text-right text-secondary items-center uppercase">
-                                    {getImage.vip_price ?  
-                                        <h5>&#8364; {getImage.vip_price} <FontAwesomeIcon icon={faCircleInfo} className="text-xs"/><div className="text-[8px] flex">con vip card</div></h5>
-                                    : 
-                                    ""
-                                    }
-                                </div> 
-                            </div>
-                            <div className="py-1 text-left">
-                                <p className="uppercase text-sm font-light">{getImage.marche}</p>
-                                <p className="text-base leading-4 first-letter:capitalize">{getImage.title}</p>
-                            </div>
-                        </div>
-                    </div> 
-                    );
-                })[0]} */}
-                {/* <ImageDropdown /> */}
-                </ElementHasCategory>
+                />
             </React.Fragment>   
         );
     });
-                                    {/* // {...getSubCategory[0]?.subcategory?.map((getItem, k) => {
-                                    //     return(
-                                    //     <div className="bg-gray-100 min-h-fit pb-10">
-                                    //         <div className="max-w-[270px] h-auto mx-auto pt-6">
-                                    //             <div className="translate-y-6 -translate-x-1 flex">
-                                    //                 <div className="bg-primary text-white text-center w-16 absolute">
-                                    //                     <p>-{Math.round(100-((getImage.sale_price*100)/(getImage.price)))}%</p>
-                                    //                 </div> 
-                                    //                 {getImage.vip_price ? 
-                                    //                     <div className="bg-secondary text-white text-center w-16 absolute mt-8">
-                                    //                         <p>-{Math.round(100-((getImage.vip_price*100)/(getImage.price)))}%</p>
-                                    //                     </div>
-                                    //                     :
-                                    //                     ""
-                                    //                 }
-                                    //             </div>
-                                    //             <div className="bg-white border border-solid border-gray-300">
-                                    //                 <img src={getImage.image_link} alt="" />
-                                    //             </div>
-                                    //             <div className="py-2 flex items-center justify-between">
-                                    //                 <div className="text-left text-primary">
-                                    //                     {getImage.price ? 
-                                    //                         <h6 className="line-through font-extralight text-sm">&#8364; {getImage.price}</h6>
-                                    //                         :
-                                    //                         ""
-                                    //                     }
-                                    //                     {getImage.sale_price ?
-                                    //                         <h5 className="font-medium text-base">&#8364; {getImage.sale_price}</h5>
-                                    //                         :
-                                    //                         ""
-                                    //                     }
-                                    //                 </div>
-                                    //                 {getImage.vip_price ? 
-                                    //                     <div className="border-solid border border-secondary w-[160px]"></div>
-                                    //                     :
-                                    //                     ""
-                                    //                 }
-                                    //                 <div className="text-right text-secondary items-center uppercase">
-                                    //                     {getImage.vip_price ?  
-                                    //                         <h5>&#8364; {getImage.vip_price} <FontAwesomeIcon icon={faCircleInfo} className="text-xs"/><div className="text-[8px] flex">con vip card</div></h5>
-                                    //                     : 
-                                    //                     ""
-                                    //                     }
-                                    //                 </div> 
-                                    //             </div>
-                                    //             <div className="py-1 text-left">
-                                    //                 <p className="uppercase text-sm font-light">{getImage.marche}</p>
-                                    //                 <p className="text-base leading-4 first-letter:capitalize">{getImage.title}</p>
-                                    //             </div>
-                                    //         </div>
-                                    //     </div> 
-                                    //     );
-                                    // })[0]} */}
-                                
 
     return(
         <div>
