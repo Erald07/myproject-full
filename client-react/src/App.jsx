@@ -3,7 +3,7 @@ import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import axios from 'axios';
 
 import ReadXml from './components/xml/ReadXmlFile';
-import Home from './components/Home';
+import Navbar from './components/navbar/Navbar';
 import Login from './components/authentication/Login';
 import Register from './components/authentication/Register';
 import Index1 from './components/items/Index1';
@@ -20,8 +20,9 @@ axios.interceptors.request.use(function(config){
 function App() {
     return (
         <Router>
+            <Navbar />
             <Routes>
-                <Route exact path='/' element={<Home />} />
+                <Route exact path='/' element={<Index1/>} />
                 <Route exact path='/read-xml' element={<ReadXml />} />
                 <Route exact path='/login' element={<Login/>} />
                 <Route exact path='/register' element={<Register/>} />
