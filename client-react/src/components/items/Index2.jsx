@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react";
 import { useParams } from "react-router-dom";
 import Items from "./Items";
+import Header from "./header/Header";
 import "./Style.css";
 
 function Index2(){
@@ -35,6 +36,9 @@ function Index2(){
     
     return(
         <>
+        <div>
+            <Header data={items}/>
+        </div>
         <div>
             <Items data={items} />
         </div>
