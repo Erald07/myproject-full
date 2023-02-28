@@ -1,7 +1,6 @@
-import { Component, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ReactPaginate from "react-paginate";
-import Navbari from "../navbar/Navbar"
 
 export default function Items(props){
     const {data} = props;
@@ -33,7 +32,6 @@ export default function Items(props){
     
     return (
         <>
-        {/* <Navbari /> */}
         <div className="items container grid grid-cols-4">
             {currentItems?.map(item => {
                 return(
