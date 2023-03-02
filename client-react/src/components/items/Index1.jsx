@@ -2,11 +2,11 @@ import {useCallback, useEffect, useState} from "react";
 import { useParams } from "react-router-dom";
 import Header from "./header/Header";
 import Items from "./Items";
+import Filter from "./filters/Filter";
 import "./Style.css";
 
 function Index1(){
     const [items, setItems] = useState([]);
-    console.log(items);
     const {getcate} = useParams();
 
     useEffect(() => {
@@ -34,6 +34,9 @@ function Index1(){
         <>
         <div>
             <Header data={items}/>
+        </div>
+        <div>
+            <Filter data={items}/>
         </div>
         <div>
             <Items data={items} />
