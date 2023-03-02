@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams, Link, useNavigate, redirect } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 const Header = (props) => {
 
@@ -11,7 +11,7 @@ const Header = (props) => {
     const navigate = useNavigate();
 
     return (
-        <div>
+        <div className='mb-8 lg:mb-20'>
             <div className="links container px-4 py-6">
                 {getcate ? <span to={'/'} className='text-bold font-bold text-xs cursor-pointer' onClick={() => navigate('/')}> Home </span> : ""}
                 {getcate ? <><span className='text-xs'>/</span><span className='last:text-primary last:font-bold last:text-sm uppercase font-normal text-black text-xs cursor-pointer' onClick={() => navigate(`/categoria-prodotto/${getcate}`)}>  {getcate} </span></> : ""}
@@ -30,9 +30,9 @@ const Header = (props) => {
                         <div className='w-3/4 flex space-x-6 items-center'>
                         {data?.slice(17, 20).map((item, i) => {
                             return(
-                                <div className="bg-white py-4 px-4 w-1/3 h-[290px]">
+                                <div key={item.id} className="bg-white py-4 px-4 w-1/3 h-[290px]">
                                     <div className='flex items-center'>
-                                        <div className="image w-[180px]">
+                                        <div className="image w-[180px] h-[180px]">
                                             <img className='' src={item.image_link} alt="Image" />
                                         </div>
                                         <div className="info mx-4">
@@ -41,7 +41,7 @@ const Header = (props) => {
                                             <p className='text-sm font-medium leading-4'>{item.title}</p>
                                         </div>
                                     </div>
-                                    <div className='pb-2 mt-6 overflow-auto h-20'>
+                                    <div className='pb-2 mt-2 overflow-auto h-20'>
                                         <p className='text-xs text-light'>{item.description}</p>
                                     </div>
                                 </div>
