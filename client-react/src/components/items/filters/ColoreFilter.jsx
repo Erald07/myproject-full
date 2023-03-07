@@ -24,7 +24,7 @@ export default function StockFilter(props) {
                 {(item.colore !== 'NULL') ? 
                     <div key={i} className='flex items-center'>
                         {filterDuplicatesColor(item.colore.split(',')).map((val) => {
-                            console.log(val);
+                            // console.log(val);
                             return(
                                 <>
                                 <input type='checkbox' className={`accent-${val} w-6 h-6`} />
