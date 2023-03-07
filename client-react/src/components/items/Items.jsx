@@ -55,7 +55,7 @@ export default function Items(props){
                     <div key={item.id} className="card px-2 block w-1/2 xs:w-1/2 lg:w-1/3 xl:w-1/4 bg-white hover:scale-105 hover:shadow-lg hover:ease-out duration-500">
                         <div className="image w-full border-solid border-gray-200 border">
                             <Slide autoplay={false} duration={1000} transitionDuration={300} {...properties}>
-                                {item.image_name.split(',').map((img) => <img src={img} alt="Image" />)}
+                                {item?.image_name?.split(',').map((img) => <img src={img} alt="Image" />)}
                             </Slide>
                             <div className="wishlist hidden">
                                 <FontAwesomeIcon icon={faHeart} className="bg-primary text-white hover:bg-white hover:text-primary border border-solid border-primary rounded-full p-3 text-xl ease-in duration-300 right-3 bottom-14 float-right relative" />
