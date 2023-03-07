@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import { useParams } from "react-router-dom";
 import Items from "./Items";
-import Header from "./header/Header";
+import Header from "./elements/Header";
 import "./Style.css";
 
 function Index4(){
