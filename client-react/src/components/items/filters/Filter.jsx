@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSliders, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import StockFilter from './StockFilter';
@@ -11,6 +11,8 @@ import { ContextFilter } from './contextFilter/ContextFilter';
 function Filter(props) {
 
     const {data} = props;
+
+    // const {isShow} = useContext(ContextFilter);
 
     // console.log(data);
     
@@ -107,7 +109,7 @@ function Filter(props) {
 
     return (
         <>
-        <ContextFilter.Provider value={{isShow1, isShow2, isShow3, isShow4, isShow5, data}}>
+        <ContextFilter.Provider value={{data, isShow1, isShow2, isShow3, isShow4, isShow5}}>
         <div className='container flex'>
             <div className='flex text-primary items-center'>
                 <FontAwesomeIcon icon={faSliders} />
@@ -119,6 +121,7 @@ function Filter(props) {
                     Prezzo & disponibilità
                     <span><FontAwesomeIcon icon={faChevronDown} className='ml-4 text-[10px]'/></span>
                 </div>
+                // <ButtonFilter name={'Prezzo & disponibilità'} />
                 :
                 ""
                 }
@@ -127,6 +130,7 @@ function Filter(props) {
                     Marca
                     <span><FontAwesomeIcon icon={faChevronDown} className='ml-4 text-[10px]'/></span>
                 </div>
+                // <ButtonFilter name={'Marca'} />
                 :
                 ""
                 }
@@ -135,6 +139,7 @@ function Filter(props) {
                     Colore
                     <span><FontAwesomeIcon icon={faChevronDown} className='ml-4 text-[10px]'/></span>
                 </div>
+                // <ButtonFilter name={'Colore'} />
                 :
                 ""
                 }
@@ -143,6 +148,7 @@ function Filter(props) {
                     Genere
                     <span><FontAwesomeIcon icon={faChevronDown} className='ml-4 text-[10px]'/></span>
                 </div>
+                // <ButtonFilter name={'Genere'} />
                 :
                 ""
                 }
@@ -151,6 +157,7 @@ function Filter(props) {
                     Età
                     <span><FontAwesomeIcon icon={faChevronDown} className='ml-4 text-[10px]'/></span>
                 </div>
+                // <ButtonFilter name={'Età'} />
                 :
                 ""
                 }
