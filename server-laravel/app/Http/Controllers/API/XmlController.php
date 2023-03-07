@@ -125,9 +125,12 @@ class XmlController extends Controller
                                     'item_id' => $data['id'] ? $data['id'] : "NULL",
                                     'image_name' => $image[$i] ? $image[$i] : "NULL"
                                 ];
-                                if(!(Gallery::where('item_id', $gallery[$i]['item_id'])->where('image_name', $gallery[$i]['image_name'])->exists()))
+                                if(!(Gallery::where('item_id', $gallery[$i]['item_id'])->exists()))
                                 {
                                     DB::insert('insert into galleries (item_id, image_name) values(?, ?)', [$gallery[$i]['item_id'], $gallery[$i]['image_name']]);
+                                }
+                                else{
+                                    DB::update("update galleries set image_name = concat(image_name, ',', ?) where item_id = ?", [$gallery[$i]['image_name'], $gallery[$i]['item_id']]);
                                 }
                             }
                         }
