@@ -18,7 +18,6 @@ export default function StockFilter(props) {
             </div>
             <div className='grid grid-cols-5 gap-y-4 px-5 pb-2'>
             {filterDuplicatesMarche(data).map((item, j) => {
-                // console.log(item.marche);
                 return(
                 <div className='items-center'>
                     <div key={j} className='flex items-center'>
