@@ -17,7 +17,6 @@ export default function StockFilter(props) {
                 <p className='pb-6 font-medium text-primary text-lg'>Filtra per sesso</p>
             </div>
             <div className='grid grid-cols-5 gap-y-4 px-5 pb-2'>
-                {}
             {filterDuplicatesGenere(data).map((item, k) => {
                 return(
                 <div className='items-center'>
