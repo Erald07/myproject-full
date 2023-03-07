@@ -30,3 +30,34 @@
 .pagination .next{
     display: none;
 }
+
+.card:hover{
+    z-index: 1;
+}
+
+.card:hover .image{
+    transform: scale(1.05);
+}
+
+.card .btn{
+    display: none;
+}
+
+.card:hover .btn{
+    display: block;
+}
+
+.card:hover .btn{
+    margin-left: 0.5rem;
+}
+
+.card:hover .wishlist{
+    display: block;
+}
+
+.card:hover .addCart{
+    width: 95%;
+    position: absolute;
+    display: block;
+    transform: scale(1.05);
+}
