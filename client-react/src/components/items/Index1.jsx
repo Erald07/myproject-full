@@ -1,6 +1,6 @@
 import {useCallback, useEffect, useState} from "react";
 import { useParams } from "react-router-dom";
-import Header from "./header/Header";
+import Header from "./elements/Header";
 import Items from "./Items";
 import Filter from "./filters/Filter";
 import "./Style.css";
