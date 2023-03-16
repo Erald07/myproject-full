@@ -13,13 +13,22 @@ function Index4(){
     const {getsubsubsubcate} = useParams();
 
     useEffect(() => {
-        fetch(`http://localhost:8000/api/categoria-prodotto/${getcate}/${getsubcate}/${getsubsubcate}/${getsubsubsubcate}`)
-          .then(items => items.json())
-          .then(
-                (result) => {
-                    setItems(result.items);
-                },
-            )
+        // fetch(`http://localhost:8000/api/categoria-prodotto/${getcate}/${getsubcate}/${getsubsubcate}/${getsubsubsubcate}`)
+        //   .then(items => items.json())
+        //   .then(
+        //         (result) => {
+        //             setItems(result.items);
+        //         },
+        //     )
+            const getSubSubSubSubCate = async () => {
+                const result = await fetch(`http://localhost:8000/api/categoria-prodotto/${getcate}/${getsubcate}/${getsubsubcate}/${getsubsubsubcate}`);
+                const subcates = await result.json();
+                if(subcates.status === 200){
+                    setItems(subcates.items);
+                }
+            }
+    
+            getSubSubSubSubCate();
     },[getcate, getsubcate, getsubsubcate, getsubsubsubcate]);
     
     return(
