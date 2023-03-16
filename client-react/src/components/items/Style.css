@@ -32,11 +32,13 @@
 }
 
 .card:hover{
-    z-index: 1;
+    z-index: 11;
+    background-color: white;
 }
 
 .card:hover .image{
     transform: scale(1.05);
+    border: none;
 }
 
 .card .btn{
@@ -60,4 +62,14 @@
     position: absolute;
     display: block;
     transform: scale(1.05);
+}
+
+.cartMarche:hover{
+    transform: scale(1.05);
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+    padding: 0 4px;
+}
+
+.cartMarche:hover .imageMarche{
+    border: none;
 }
