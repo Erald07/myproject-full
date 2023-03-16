@@ -3,7 +3,7 @@ import React, {useState, useContext} from "react";
 import { CategoryContext } from "./contextCategory/CategoryContext";
 import ImageDropdown from "./ImageDropdown";
 
-const Modal = () => {
+const DropdownCategory = () => {
 
     const {  subcategory } = useContext(CategoryContext);
 
@@ -30,4 +30,4 @@ const Modal = () => {
     );
 }
 
-export default Modal;
+export default DropdownCategory;
