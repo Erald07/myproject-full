@@ -68,21 +68,21 @@ class XmlController extends Controller
                             if($i == 1)
                             {
                                 $dataCategory[$i] = [
-                                    'cate_id' => $list['category'.$i]['id'] ? $list['category'.$i]['id'] : "NULL",
+                                    'id' => $list['category'.$i]['id'] ? $list['category'.$i]['id'] : "NULL",
                                     'cate_name' => $list['category'.$i]['name'] ? $list['category'.$i]['name'] : "NULL",
                                     'parent_cate_id' => "0",
                                 ];
                             }
                             else{
                                 $dataCategory[$i] = [
-                                    'cate_id' => $list['category'.$i]['id'] ? $list['category'.$i]['id'] : "NULL",
+                                    'id' => $list['category'.$i]['id'] ? $list['category'.$i]['id'] : "NULL",
                                     'cate_name' => $list['category'.$i]['name'] ? $list['category'.$i]['name'] : "NULL",
                                     'parent_cate_id' => $list['category'.($i-1)]['id'],
                                 ];
                             }
-                            if(!(Category::where('cate_id', $dataCategory[$i]['cate_id'])->where('cate_name', $dataCategory[$i]['cate_name'])->exists()))
+                            if(!(Category::where('id', $dataCategory[$i]['id'])->where('cate_name', $dataCategory[$i]['cate_name'])->exists()))
                             {
-                                DB::insert('insert into categories (cate_id, cate_name, parent_cate_id) values(?, ?, ?)', [$dataCategory[$i]['cate_id'], $dataCategory[$i]['cate_name'], $dataCategory[$i]['parent_cate_id']]);
+                                DB::insert('insert into categories (id, cate_name, parent_cate_id) values(?, ?, ?)', [$dataCategory[$i]['id'], $dataCategory[$i]['cate_name'], $dataCategory[$i]['parent_cate_id']]);
                             }                            
                         }
                     }
@@ -94,21 +94,21 @@ class XmlController extends Controller
                         if($i == 1)
                         {
                             $dataCategory[$i] = [
-                                'cate_id' => $list['id'] ? $list['id'] : "NULL",
+                                'id' => $list['id'] ? $list['id'] : "NULL",
                                 'cate_name' => $list['name'] ? $list['name'] : "NULL",
                                 'parent_cate_id' => "0",
                             ];
                         }
                         else{
                             $dataCategory[$i] = [
-                                'cate_id' => $list['id'] ? $list['id'] : "NULL",
+                                'id' => $list['id'] ? $list['id'] : "NULL",
                                 'cate_name' => $list['name'] ? $list['name'] : "NULL",
                                 'parent_cate_id' => $list['id'],
                             ];
                         }
-                        if(!(Category::where('cate_id', $dataCategory[$i]['cate_id'])->where('cate_name', $dataCategory[$i]['cate_name'])->exists()))
+                        if(!(Category::where('id', $dataCategory[$i]['id'])->where('cate_name', $dataCategory[$i]['cate_name'])->exists()))
                         {
-                            DB::insert('insert into categories (cate_id, cate_name, parent_cate_id) values(?, ?, ?)', [$dataCategory[$i]['cate_id'], $dataCategory[$i]['cate_name'], $dataCategory[$i]['parent_cate_id']]);
+                            DB::insert('insert into categories (id, cate_name, parent_cate_id) values(?, ?, ?)', [$dataCategory[$i]['id'], $dataCategory[$i]['cate_name'], $dataCategory[$i]['parent_cate_id']]);
                         }
                         $i++;
                         
