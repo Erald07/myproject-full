@@ -4,6 +4,9 @@ import Header from "./elements/Header";
 import Items from "./Items";
 import Filter from "./filters/Filter";
 import "./Style.css";
+import FilterFooter from "./elements/FilterFooter";
+import Footer from "./elements/Footer";
+import Context from "../navbar/contextCategory/Context";
 
 function Index1(){
     const [items, setItems] = useState([]);
@@ -21,9 +24,9 @@ function Index1(){
             const result = await fetch(`http://localhost:8000/api/categoria-prodotto/${getcate}`);
             const subcates = await result.json();
             // console.log(subcates);
-            // if(subcates.status === 200){
+            if(subcates.status === 200){
                 setItems(subcates.items);
-            // }
+            }
         }
 
         getSubCate();
@@ -31,6 +34,7 @@ function Index1(){
     },[getcate]);
     
     return(
+        <Context>
         <>
         <div>
             <Header data={items}/>
@@ -42,6 +46,7 @@ function Index1(){
             <Items data={items} />
         </div>
         </>
+        </Context>
     );
 }
 
