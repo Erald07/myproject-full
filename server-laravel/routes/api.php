@@ -19,6 +19,7 @@ Route::get('/categoria-prodotto/{cateName}/{subCateName}', [ItemController::clas
 Route::get('/categoria-prodotto/{cateName}/{subCateName}/{subSubCateName}', [ItemController::class, 'index3']);
 Route::get('/categoria-prodotto/{cateName}/{subCateName}/{subSubCateName}/{subSubSubCateName}', [ItemController::class, 'index4']);
 
+Route::get('/prodotto/{title}', [ItemController::class, 'item']);
 
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('/logout', [UserController::class, 'logout']);
@@ -27,3 +28,5 @@ Route::middleware(['auth:sanctum'])->group(function () {
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/filter', [ItemController::class, 'filter']);
