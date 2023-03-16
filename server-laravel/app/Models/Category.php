@@ -11,7 +11,7 @@ class Category extends Model
 
     protected $table = 'categories';
     protected $fillable = [
-        'cate_id',
+        'id',
         'cate_name',
         'parent_cate_id',
     ];
@@ -22,7 +22,7 @@ class Category extends Model
     }
     public function subcategory()
     {
-        return $this->hasMany(Category::class, 'parent_cate_id', 'cate_id')->with('subcategory');
+        return $this->hasMany(Category::class, 'parent_cate_id', 'id')->with('subcategory');
     }
 
     public function parents()
