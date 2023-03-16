@@ -1,0 +1,28 @@
+.item{
+    border: 1px solid white;
+    padding: 0.5rem 1.5rem;
+    border-radius: 9999px;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    margin: 1rem;
+    color: white;
+    margin: 1rem;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+.item:hover{
+    background-color: theme('colors.primary');
+    color: white;
+    border: 1px solid theme('colors.primary');
+}
+
+.close{
+    color: black;
+}
+
+.close:hover{
+    color: theme('colors.primary');
+    border: 1px solid theme('colors.primary');
+}
+
