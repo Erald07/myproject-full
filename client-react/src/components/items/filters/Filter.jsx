@@ -7,14 +7,12 @@ import ColoreFilter from './ColoreFilter';
 import GenereFilter from './GenereFilter';
 import EtaFilter from './EtaFilter';
 import { ContextFilter } from './contextFilter/ContextFilter';
+import Item from '../item/Item';
 
 function Filter(props) {
 
     const {data} = props;
-
     // const {isShow} = useContext(ContextFilter);
-
-    // console.log(data);
     
     const [isShow1, setIsShow1] = useState(false);
     const [isShow2, setIsShow2] = useState(false);
@@ -110,59 +108,73 @@ function Filter(props) {
     return (
         <>
         <ContextFilter.Provider value={{data, isShow1, isShow2, isShow3, isShow4, isShow5}}>
-        <div className='container flex'>
-            <div className='flex text-primary items-center'>
-                <FontAwesomeIcon icon={faSliders} />
-                <span className='uppercase font-medium text-sm ml-1 mr-6'>Filtri</span>
+        <div className='container flex justify-between px-2 items-center'>
+            <div className='flex'>
+                <div className='flex text-primary items-center'>
+                    <FontAwesomeIcon icon={faSliders} />
+                    <span className='uppercase font-medium text-sm ml-1 mr-6'>Filtri</span>
+                </div>
+                <div className="buttons flex space-x-3 px-3">
+                    {stock ? 
+                    <div className="border border-gray-400 border-solid rounded-2xl py-2 px-4 text-xs text-gary leading-tight w-auto hover:bg-gray-400 hover:text-white cursor-pointer items-center" onClick={handleClick1}>
+                        Prezzo & disponibilità
+                        <span><FontAwesomeIcon icon={faChevronDown} className='ml-4 text-[10px]'/></span>
+                    </div>
+                    // <ButtonFilter name={'Prezzo & disponibilità'} />
+                    :
+                    ""
+                    }
+                    {marche ? 
+                    <div className="border border-gray-400 border-solid rounded-2xl py-2 px-4 text-xs text-gary leading-tight w-auto hover:bg-gray-400 hover:text-white cursor-pointer items-center" onClick={handleClick3}>
+                        Marca
+                        <span><FontAwesomeIcon icon={faChevronDown} className='ml-4 text-[10px]'/></span>
+                    </div>
+                    // <ButtonFilter name={'Marca'} />
+                    :
+                    ""
+                    }
+                    {colore ?
+                    <div className="border border-gray-400 border-solid rounded-2xl py-2 px-4 text-xs text-gary leading-tight w-auto hover:bg-gray-400 hover:text-white cursor-pointer items-center" onClick={handleClick2}>
+                        Colore
+                        <span><FontAwesomeIcon icon={faChevronDown} className='ml-4 text-[10px]'/></span>
+                    </div>
+                    // <ButtonFilter name={'Colore'} />
+                    :
+                    ""
+                    }
+                    {genere ?
+                    <div className="border border-gray-400 border-solid rounded-2xl py-2 px-4 text-xs text-gary leading-tight w-auto hover:bg-gray-400 hover:text-white cursor-pointer items-center" onClick={handleClick4}>
+                        Genere
+                        <span><FontAwesomeIcon icon={faChevronDown} className='ml-4 text-[10px]'/></span>
+                    </div>
+                    // <ButtonFilter name={'Genere'} />
+                    :
+                    ""
+                    }
+                    {eta ?
+                    <div className="border border-gray-400 border-solid rounded-2xl py-2 px-4 text-xs text-gary leading-tight w-auto hover:bg-gray-400 hover:text-white cursor-pointer items-center" onClick={handleClick5}>
+                        Età
+                        <span><FontAwesomeIcon icon={faChevronDown} className='ml-4 text-[10px]'/></span>
+                    </div>
+                    // <ButtonFilter name={'Età'} />
+                    :
+                    ""
+                    }
+                </div>
             </div>
-            <div className="buttons w-1/2 flex space-x-3 px-3">
-                {stock ? 
-                <div className="border border-gray-400 border-solid rounded-2xl py-2 px-4 text-xs text-gary leading-tight w-auto hover:bg-gray-400 hover:text-white cursor-pointer items-center" onClick={handleClick1}>
-                    Prezzo & disponibilità
-                    <span><FontAwesomeIcon icon={faChevronDown} className='ml-4 text-[10px]'/></span>
-                </div>
-                // <ButtonFilter name={'Prezzo & disponibilità'} />
-                :
-                ""
-                }
-                {marche ? 
-                <div className="border border-gray-400 border-solid rounded-2xl py-2 px-4 text-xs text-gary leading-tight w-auto hover:bg-gray-400 hover:text-white cursor-pointer items-center" onClick={handleClick3}>
-                    Marca
-                    <span><FontAwesomeIcon icon={faChevronDown} className='ml-4 text-[10px]'/></span>
-                </div>
-                // <ButtonFilter name={'Marca'} />
-                :
-                ""
-                }
-                {colore ?
-                <div className="border border-gray-400 border-solid rounded-2xl py-2 px-4 text-xs text-gary leading-tight w-auto hover:bg-gray-400 hover:text-white cursor-pointer items-center" onClick={handleClick2}>
-                    Colore
-                    <span><FontAwesomeIcon icon={faChevronDown} className='ml-4 text-[10px]'/></span>
-                </div>
-                // <ButtonFilter name={'Colore'} />
-                :
-                ""
-                }
-                {genere ?
-                <div className="border border-gray-400 border-solid rounded-2xl py-2 px-4 text-xs text-gary leading-tight w-auto hover:bg-gray-400 hover:text-white cursor-pointer items-center" onClick={handleClick4}>
-                    Genere
-                    <span><FontAwesomeIcon icon={faChevronDown} className='ml-4 text-[10px]'/></span>
-                </div>
-                // <ButtonFilter name={'Genere'} />
-                :
-                ""
-                }
-                {eta ?
-                <div className="border border-gray-400 border-solid rounded-2xl py-2 px-4 text-xs text-gary leading-tight w-auto hover:bg-gray-400 hover:text-white cursor-pointer items-center" onClick={handleClick5}>
-                    Età
-                    <span><FontAwesomeIcon icon={faChevronDown} className='ml-4 text-[10px]'/></span>
-                </div>
-                // <ButtonFilter name={'Età'} />
-                :
-                ""
-                }
+            <div className=''>
+                <p className='font-normal text-xs md:text-sm'><span className='text-primary font-medium text-xs md:text-sm'>{data?.length} prodotti</span> ordinati per
+                    <select className='border border-solid border-gray-300 px-4 py-2 rounded-full text-gray-600 text-base sm:text-xs leading-tight focus:outline-none pr-6 ml-2'>
+                        <option value={'popolarita'}>Popolarita</option>
+                        <option value={'valutazione-media'}>Valutazione media</option>
+                        <option value={'ordina-in-base-al-piu-recente'}>Ordina in base al piu recente</option>
+                        <option value={'prezzo-dal-piu-ecomomico'} selected>Prezzo: dal piu ecomomico</option>
+                        <option value={'prezzo-dal-piu-caro'}>Prezzo: dal piu caro</option>
+                    </select>
+                </p>
             </div>
         </div>
+        
         <StockFilter />
 
         <ColoreFilter />
