@@ -15,6 +15,8 @@ return new class extends Migration
             $table->bigInteger('item_id');
             $table->bigInteger('cate_id');
             $table->integer('order_id');
+            $table->foreign('item_id')->references('id')->on('items')->onDelete('cascade');
+            $table->foreign('cate_id')->references('id')->on('categories')->onDelete('cascade');
         });
     }
 
