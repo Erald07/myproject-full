@@ -5,7 +5,7 @@ import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 
 const ElementEmptyCategory = props => {
     return(
-        <li {...props.key} className="nav-item border-gray-300 border-t">
+        <li className="nav-item border-gray-300 border-t">
             <Link className="nav-links py-5 w-full flex justify-between font-semibold px-6" to={props.link}>
                 <div className="lowercase first-letter:capitalize" >
                     {props.name}
