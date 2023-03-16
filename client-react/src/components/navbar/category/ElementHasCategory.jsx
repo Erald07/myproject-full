@@ -6,7 +6,7 @@ import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 const ElementHasCategory = props => {
     // console.log(props);
     return(
-    <li key={props.key} className="nav-item border-gray-300 border-t cursor-pointer" onClick={props.onClick}>
+    <li className="nav-item border-gray-300 border-t cursor-pointer" onClick={props.onClick}>
         <div className="nav-links py-5 w-full flex justify-between font-semibold px-6" onClick={props.onClick}>
             <div className="lowercase first-letter:capitalize" >
                 {props.name}
