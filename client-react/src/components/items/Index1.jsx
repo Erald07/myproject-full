@@ -13,13 +13,6 @@ function Index1(){
     const {getcate} = useParams();
 
     useEffect(() => {
-        // fetch(`http://localhost:8000/api/categoria-prodotto/${getcate}`)
-        //   .then(items => items.json())
-        //   .then(
-        //         (result) => {
-        //             setItems(result.items);
-        //         },
-        //     )
         const getSubCate = async () => {
             const result = await fetch(`http://localhost:8000/api/categoria-prodotto/${getcate}`);
             const subcates = await result.json();
@@ -30,7 +23,6 @@ function Index1(){
         }
 
         getSubCate();
-        // getItems();
     },[getcate]);
     
     return(

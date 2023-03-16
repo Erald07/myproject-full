@@ -11,16 +11,6 @@ function Index3(){
     const {getsubcate} = useParams();
     const {getsubsubcate} = useParams();
 
-    // useEffect(() => {
-    //     fetch(`http://localhost:8000/api/categoria-prodotto/${getcate}/${getsubcate}/${getsubsubcate}`)
-    //       .then(items => items.json())
-    //       .then(
-    //             (result) => {
-    //                 // console.log(result);
-    //                 setItems(result.items);
-    //             },
-    //         )
-    // },[getcate, getsubcate, getsubsubcate]);
     useEffect(()=> {
         const getSubSubSubCate = async () => {
             const result = await fetch(`http://localhost:8000/api/categoria-prodotto/${getcate}/${getsubcate}/${getsubsubcate}`);
