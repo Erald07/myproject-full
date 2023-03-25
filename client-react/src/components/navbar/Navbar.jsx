@@ -117,7 +117,7 @@ function Nav(){
                     </a>
                 </div>
                 <div className="hidden lg:flex lg:p-2 lg:border-b lg:border-black lg:items-center">
-                    <Link to={'modal-search'}><input type={'text'} /*onClick={() => setShowModal(!showModal)}*/ placeholder="Che prodotto stai cercando?" className="lg:focus:outline-none font-semibold placeholder:text-black xl:w-[35rem] lg:w-[20rem]" /></Link>
+                    <Link to={'modal-searchcl'}><input type={'text'} /*onClick={() => setShowModal(!showModal)}*/ placeholder="Che prodotto stai cercando?" className="lg:focus:outline-none font-semibold placeholder:text-black xl:w-[35rem] lg:w-[20rem]" /></Link>
                     <button type="submit" className="float-right">
                         <FontAwesomeIcon icon={faMagnifyingGlass} className='text-2xl ml-3' />
                     </button>
