@@ -1,5 +1,6 @@
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Header = (props) => {
 
@@ -30,7 +31,7 @@ const Header = (props) => {
                         <div className='w-3/4 flex space-x-6 items-center'>
                         {data?.slice(17, 20).map((item, i) => {
                             return(
-                                <div key={item.id} className="bg-white py-4 px-4 w-1/3 h-[290px]">
+                                <Link to={`/prodotto/${item.title}`} key={item.id} className="bg-white py-4 px-4 w-1/3 h-[290px] hover:shadow-xl">
                                     <div className='flex'>
                                         <div className="image w-1/2 h-full">
                                             <img className='' src={item.image_link} alt="Image" />
@@ -44,7 +45,7 @@ const Header = (props) => {
                                     <div className='pb-4 mt-6 overflow-auto h-24'>
                                         <p className='text-xs text-light'>{item.description}</p>
                                     </div>
-                                </div>
+                                </Link>
                             );
                         })}
                         </div>
