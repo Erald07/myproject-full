@@ -6,43 +6,80 @@ import MarcheFilter from './MarcheFilter';
 import ColoreFilter from './ColoreFilter';
 import GenereFilter from './GenereFilter';
 import EtaFilter from './EtaFilter';
+import TagliaFilter from './TagliaFilter';
 import { ContextFilter } from './contextFilter/ContextFilter';
-import Item from '../item/Item';
+import { useNavigate } from 'react-router-dom';
+import Context from "../../navbar/contextCategory/Context";
 
 function Filter(props) {
-
     const {data} = props;
-    // const {isShow} = useContext(ContextFilter);
+    const navigate = useNavigate();
     
     const [isShow1, setIsShow1] = useState(false);
     const [isShow2, setIsShow2] = useState(false);
     const [isShow3, setIsShow3] = useState(false);
     const [isShow4, setIsShow4] = useState(false);
     const [isShow5, setIsShow5] = useState(false);
+    const [isShow6, setIsShow6] = useState(false);
     const [stock, setStock] = useState(false);
     const [marche, setMarche] = useState(false);
     const [colore, setColore] = useState(false);
     const [genere, setGenere] = useState(false);
     const [eta, setEta] = useState(false);
+    const [taglia, setTaglia] = useState(false);
 
     const handleClick1 = event => {
         setIsShow1(current => !current);
+        setIsShow2(false);
+        setIsShow3(false);
+        setIsShow4(false);
+        setIsShow5(false);
+        setIsShow6(false);
     }
 
     const handleClick2 = event => {
         setIsShow2(current => !current);
+        setIsShow1(false);
+        setIsShow3(false);
+        setIsShow4(false);
+        setIsShow5(false);
+        setIsShow6(false);
     }
 
     const handleClick3 = event => {
         setIsShow3(current => !current);
+        setIsShow1(false);
+        setIsShow2(false);
+        setIsShow4(false);
+        setIsShow5(false);
+        setIsShow6(false);
     }
 
     const handleClick4 = event => {
         setIsShow4(current => !current);
+        setIsShow1(false);
+        setIsShow2(false);
+        setIsShow3(false);
+        setIsShow5(false);
+        setIsShow6(false);
     }
 
     const handleClick5 = event => {
         setIsShow5(current => !current);
+        setIsShow1(false);
+        setIsShow2(false);
+        setIsShow3(false);
+        setIsShow4(false);
+        setIsShow6(false);
+    }
+
+    const handleClick6 = event => {
+        setIsShow6(current => !current);
+        setIsShow1(false);
+        setIsShow2(false);
+        setIsShow3(false);
+        setIsShow4(false);
+        setIsShow5(false);
     }
 
     useEffect(() => {
@@ -84,7 +121,7 @@ function Filter(props) {
     useEffect(() => {
         function genere(){
             for(let i = 0; i < data.length; i++){
-                if(data[i].genre !== ''){
+                if(data[i].genere !== ''){
                     setGenere(true);
                 }
             }
@@ -105,9 +142,57 @@ function Filter(props) {
         eta();
     });
 
+    useEffect(() => {
+        function taglia(){
+            for(let i = 0; i < data.length; i++){
+                if(data[i].taglia !== 'NULL' && data[i].taglia !== 'NONE'){
+                    setTaglia(true);
+                }
+            }
+        }
+
+        taglia();
+    });
+
+    // const queryParams = new URLSearchParams(window.location.search);
+    // var col = '';
+    // var mar = '';
+    // var eta1 = '';
+    // var availability = '';
+    // var min_price = '';
+    // var max_price = '';
+    // var query = `?genere=${genereInfo['genere'].toString()}`;
+    // if(queryParams.get("marche") !== null){
+    //     marche = queryParams.get("marche");
+    //     query += `&marche=${marche}`;
+    // }
+    // if(queryParams.get("eta") !== null){
+    //     eta = queryParams.get("eta");
+    //     query += `&eta=${eta}`;
+    // }
+    // if(queryParams.get("colore") !== null){
+    //     colore = queryParams.get("colore");
+    //     query += `&colore=${colore}`;
+    // }
+    // if(queryParams.get("exclude_out_of_stock") !== null){
+    //     availability = queryParams.get("exclude_out_of_stock");
+    //     query += `&exclude_out_of_stock=${availability}`;
+    // }
+    // if(queryParams.get("min_price") !== null){
+    //     min_price = queryParams.get("min_price");
+    //     query += `&min_price=${min_price}`;
+    // }
+    // if(queryParams.get("max_price") !== null){
+    //     max_price = queryParams.get("max_price");
+    //     query += `&max_price=${max_price}`;
+    // }
+
+    function handleChange(e){
+        navigate(`?orderBy=${e.target.value}`)
+    }
     return (
         <>
-        <ContextFilter.Provider value={{data, isShow1, isShow2, isShow3, isShow4, isShow5}}>
+        <ContextFilter.Provider value={{data, isShow1, isShow2, isShow3, isShow4, isShow5, isShow6,setIsShow1, setIsShow2, setIsShow3, setIsShow4, setIsShow5, setIsShow6}}>
         <div className='container flex justify-between px-2 items-center'>
             <div className='flex'>
                 <div className='flex text-primary items-center'>
@@ -115,6 +200,15 @@ function Filter(props) {
                     <span className='uppercase font-medium text-sm ml-1 mr-6'>Filtri</span>
                 </div>
                 <div className="buttons flex space-x-3 px-3">
+                    {taglia ? 
+                    <div className="border border-gray-400 border-solid rounded-2xl py-2 px-4 text-xs text-gary leading-tight w-auto hover:bg-gray-400 hover:text-white cursor-pointer items-center" onClick={handleClick6}>
+                        Taglia
+                        <span><FontAwesomeIcon icon={faChevronDown} className='ml-4 text-[10px]'/></span>
+                    </div>
+                    // <ButtonFilter name={'Prezzo & disponibilità'} />
+                    :
+                    ""
+                    }
                     {stock ? 
                     <div className="border border-gray-400 border-solid rounded-2xl py-2 px-4 text-xs text-gary leading-tight w-auto hover:bg-gray-400 hover:text-white cursor-pointer items-center" onClick={handleClick1}>
                         Prezzo & disponibilità
@@ -164,12 +258,12 @@ function Filter(props) {
             </div>
             <div className=''>
                 <p className='font-normal text-xs md:text-sm'><span className='text-primary font-medium text-xs md:text-sm'>{data?.length} prodotti</span> ordinati per
-                    <select className='border border-solid border-gray-300 px-4 py-2 rounded-full text-gray-600 text-base sm:text-xs leading-tight focus:outline-none pr-6 ml-2'>
+                    <select onChange={handleChange} className='border border-solid border-gray-300 px-4 py-2 rounded-full text-gray-600 text-base sm:text-xs leading-tight focus:outline-none pr-6 ml-2'>
                         <option value={'popolarita'}>Popolarita</option>
                         <option value={'valutazione-media'}>Valutazione media</option>
                         <option value={'ordina-in-base-al-piu-recente'}>Ordina in base al piu recente</option>
-                        <option value={'prezzo-dal-piu-ecomomico'} selected>Prezzo: dal piu ecomomico</option>
-                        <option value={'prezzo-dal-piu-caro'}>Prezzo: dal piu caro</option>
+                        <option value={'price'} selected>Prezzo: dal piu ecomomico</option>
+                        <option value={'price-desc'}>Prezzo: dal piu caro</option>
                     </select>
                 </p>
             </div>
@@ -184,6 +278,10 @@ function Filter(props) {
         <GenereFilter />
 
         <EtaFilter />
+
+        <Context>
+            <TagliaFilter />
+        </Context>
         
         </ContextFilter.Provider>
         </>
