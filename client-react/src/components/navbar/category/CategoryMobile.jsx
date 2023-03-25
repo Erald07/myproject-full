@@ -6,7 +6,7 @@ import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
 import ImageDropdown from "../ImageDropdown";
 import { CategoryContext } from "../contextCategory/CategoryContext";
 
-function CategoriesMobile(){
+const CategoriesMobile = () => {
 
     const {state, getSubCategory, categoryHandler} = useContext(CategoryContext);
     // const [state, setState] = useState([]);
