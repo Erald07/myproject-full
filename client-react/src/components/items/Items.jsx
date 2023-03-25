@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import ReactPaginate from "react-paginate";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faChevronLeft, faChevronRight, faCircleInfo } from "@fortawesome/free-solid-svg-icons";
 import { Slide } from "react-slideshow-image";
 import 'react-slideshow-image/dist/styles.css';
-import { ContextFilter } from "./filters/contextFilter/ContextFilter";
+import { ContextCart } from "./cart/ContextCart";
 
 const buttonStyle = {
     width: "30px",
@@ -20,6 +20,7 @@ const properties = {
 
 export default function Items(props){
     const {data} = props;
+    const {addCart} = useContext(ContextCart);
 
     const [currentItems,setCurrentItems] = useState([]);
     const [pageCount, setPageCount] = useState(0);
@@ -74,10 +75,10 @@ export default function Items(props){
                             </div>
                             {(item?.image_name?.split(',')).length >= 2 ? 
                                 <Slide autoplay={false} duration={1000} transitionDuration={300} {...properties}>
-                                    {item?.image_name?.split(',').map((img) => <Link to={`/prodotto/${item.title}`}><img src={img} alt="Image" className="relative block w-full" /></Link>)}
+                                    {item?.image_name?.split(',').map((img) => <Link key={item.id} to={`/prodotto/${item.title}`}><img src={img} alt="Image" className="relative block w-full" /></Link>)}
                                 </Slide>
                                 :
-                                <Link to={`/prodotto/${item.title}`}><img src={item.image_name} alt="Image" /></Link>
+                                <Link key={item.id} to={`/prodotto/${item.title}`}><img src={item.image_name} alt="Image" /></Link>
                             }
                             <div className="wishlist hidden">
                                 <FontAwesomeIcon icon={faHeart} className="bg-primary text-white hover:bg-white hover:text-primary border border-solid border-primary rounded-full p-3 text-xl ease-in duration-300 right-3 bottom-14 float-right relative" />
@@ -118,7 +119,7 @@ export default function Items(props){
                             </div>
                         </div>
                         <div className="addCart mb-3 hidden bg-white shadow-lg px-2 py-3">
-                            <button className="bg-primary text-white uppercase font-medium text-md py-2 text-center w-full rounded-full border border-solid border-primary hover:bg-white hover:text-primary ease-in duration-150">AGGIUNGI AL CARRELLO</button>
+                            <button onClick={() => addCart(item.id)} className="bg-primary text-white uppercase font-medium text-md py-2 text-center w-full rounded-full border border-solid border-primary hover:bg-white hover:text-primary ease-in duration-150">AGGIUNGI AL CARRELLO</button>
                         </div>
                     </div>
                 );
