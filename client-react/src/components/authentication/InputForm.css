@@ -80,3 +80,14 @@ button#register:enabled:hover{
 .nav-xmark{
     color: white;
 }
+
+.close-modal{
+    color: gray;
+    font-size: 2rem;
+    padding: 0;
+    position: relative;
+}
+
+.close-modal:hover{
+    border: none;
+}
