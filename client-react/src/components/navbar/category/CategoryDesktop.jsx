@@ -1,16 +1,11 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
 import { useNavigate, Link } from "react-router-dom";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCaretUp, faCircleInfo } from "@fortawesome/free-solid-svg-icons";
 import ButonCategory from "../ButonCategory";
 import DropdownCategory from "../DropdownCategory";
-import ImageDropdown from '../ImageDropdown';
 import { CategoryContext } from '../contextCategory/CategoryContext';
-import CategoryMobile from './CategoryMobile';
-import Footer from '../../items/elements/Footer';
 
 const CategoryDesktop = () => {
-    const {state, getCategory, getSubCategory, count} = useContext(CategoryContext);
+    const {state, getCategory, count} = useContext(CategoryContext);
     // const [count, setCount] = useState(0);
     // const [state, setState] = useState([]);
     // const [getCategory, setCategory] = useState();
