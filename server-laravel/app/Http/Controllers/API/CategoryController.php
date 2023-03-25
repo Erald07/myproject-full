@@ -36,7 +36,7 @@ class CategoryController extends Controller
 
         $subimage = DB::table('items')
         ->join('item_cates', 'items.id', '=', 'item_cates.item_id')
-        ->join('categories', 'item_cates.cate_id', '=', 'categories.cate_id')
+        ->join('categories', 'item_cates.cate_id', '=', 'categories.id')
         ->select('price', 'sale_price', 'vip_price', 'items.image_link','items.title', 'items.marche')
         ->distinct()
         ->where('categories.cate_name', $subName)
