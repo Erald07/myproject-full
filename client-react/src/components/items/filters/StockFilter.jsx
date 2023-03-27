@@ -1,6 +1,4 @@
-import React, {useState, useEffect, useContext} from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import React, {useState, useContext} from 'react'
 import RangeSlider from './multiRangeSlider/RangeSlider';
 import { ContextFilter } from './contextFilter/ContextFilter';
 import { Link } from 'react-router-dom';

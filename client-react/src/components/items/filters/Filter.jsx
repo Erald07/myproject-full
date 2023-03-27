@@ -10,6 +10,7 @@ import TagliaFilter from './TagliaFilter';
 import { ContextFilter } from './contextFilter/ContextFilter';
 import { useNavigate } from 'react-router-dom';
 import Context from "../../navbar/contextCategory/Context";
+import ButtonFilter from './ButtonFilter';
 
 function Filter(props) {
     const {data} = props;
@@ -154,39 +155,6 @@ function Filter(props) {
         taglia();
     });
 
-    // const queryParams = new URLSearchParams(window.location.search);
-    // var col = '';
-    // var mar = '';
-    // var eta1 = '';
-    // var availability = '';
-    // var min_price = '';
-    // var max_price = '';
-    // var query = `?genere=${genereInfo['genere'].toString()}`;
-    // if(queryParams.get("marche") !== null){
-    //     marche = queryParams.get("marche");
-    //     query += `&marche=${marche}`;
-    // }
-    // if(queryParams.get("eta") !== null){
-    //     eta = queryParams.get("eta");
-    //     query += `&eta=${eta}`;
-    // }
-    // if(queryParams.get("colore") !== null){
-    //     colore = queryParams.get("colore");
-    //     query += `&colore=${colore}`;
-    // }
-    // if(queryParams.get("exclude_out_of_stock") !== null){
-    //     availability = queryParams.get("exclude_out_of_stock");
-    //     query += `&exclude_out_of_stock=${availability}`;
-    // }
-    // if(queryParams.get("min_price") !== null){
-    //     min_price = queryParams.get("min_price");
-    //     query += `&min_price=${min_price}`;
-    // }
-    // if(queryParams.get("max_price") !== null){
-    //     max_price = queryParams.get("max_price");
-    //     query += `&max_price=${max_price}`;
-    // }
-
     function handleChange(e){
         navigate(`?orderBy=${e.target.value}`)
     }
@@ -205,7 +173,6 @@ function Filter(props) {
                         Taglia
                         <span><FontAwesomeIcon icon={faChevronDown} className='ml-4 text-[10px]'/></span>
                     </div>
-                    // <ButtonFilter name={'Prezzo & disponibilità'} />
                     :
                     ""
                     }
@@ -214,7 +181,6 @@ function Filter(props) {
                         Prezzo & disponibilità
                         <span><FontAwesomeIcon icon={faChevronDown} className='ml-4 text-[10px]'/></span>
                     </div>
-                    // <ButtonFilter name={'Prezzo & disponibilità'} />
                     :
                     ""
                     }
@@ -223,7 +189,6 @@ function Filter(props) {
                         Marca
                         <span><FontAwesomeIcon icon={faChevronDown} className='ml-4 text-[10px]'/></span>
                     </div>
-                    // <ButtonFilter name={'Marca'} />
                     :
                     ""
                     }
@@ -232,7 +197,6 @@ function Filter(props) {
                         Colore
                         <span><FontAwesomeIcon icon={faChevronDown} className='ml-4 text-[10px]'/></span>
                     </div>
-                    // <ButtonFilter name={'Colore'} />
                     :
                     ""
                     }
@@ -241,7 +205,6 @@ function Filter(props) {
                         Genere
                         <span><FontAwesomeIcon icon={faChevronDown} className='ml-4 text-[10px]'/></span>
                     </div>
-                    // <ButtonFilter name={'Genere'} />
                     :
                     ""
                     }
@@ -250,7 +213,6 @@ function Filter(props) {
                         Età
                         <span><FontAwesomeIcon icon={faChevronDown} className='ml-4 text-[10px]'/></span>
                     </div>
-                    // <ButtonFilter name={'Età'} />
                     :
                     ""
                     }

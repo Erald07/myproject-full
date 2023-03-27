@@ -7,7 +7,7 @@ export default function TagliaFilter(props) {
     
     const {isShow6, data, setIsShow6} = useContext(ContextFilter);
     const {getSubCategory} = useContext(CategoryContext);
-    console.log(data);
+    
     const [tagliaInfo, setTagliaInfo] = useState({
         taglia: [],
     });
