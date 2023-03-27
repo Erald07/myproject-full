@@ -43,12 +43,14 @@ const SpecialProducts = ({specialItems}) => {
                                         </div>
                                     </div>
                                     :
-                                    item.price ?
+                                    item.price !== null ?
                                     <div className="flex items-center">
                                         <span className='font-normal text-sm sm:text-base mr-1'>€ {item.price}</span>
                                     </div>
                                     :
-                                    ''
+                                    <div className="flex items-center">
+                                        <span className='font-normal text-sm sm:text-base mr-1'>€ {item?.parent?.price}</span>
+                                    </div>
                                     }
                                 </div>
                                 <div className="float-right mx-2 py-2 px-3 bg-primary text-white rounded-md opacity-90 hover:opacity-100">
