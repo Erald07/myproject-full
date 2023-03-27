@@ -20,12 +20,12 @@ const LikeItems = (props) => {
                                     ""
                                 }
                             </div>
-                            {(likeItem?.image_name?.split(',')).length >= 2 ? 
+                            {likeItem?.galleries?.length !== 0 ? 
                                 <Slide autoplay={false} duration={1000} transitionDuration={300} {...props.properties}>
-                                    {likeItem?.image_name?.split(',').map((img) => <Link to={`/prodotto/${likeItem.title}`}><img src={img} alt="Image" className="relative block w-full" /></Link>)}
+                                    {likeItem?.galleries[0].image_name?.split(',').map((img) => <Link to={`/prodotto/${likeItem.title}`}><img src={img} alt="Image" className="relative block w-full" /></Link>)}
                                 </Slide>
                                 :
-                                <Link to={`/prodotto/${likeItem.title}`}><img src={likeItem.image_name} alt="Image" className='w-full' /></Link>
+                                <Link to={`/prodotto/${likeItem.title}`}><img src={likeItem.image_link} alt="Image" className='w-full' /></Link>
                             }
                             <div className="wishlist hidden">
                                 <FontAwesomeIcon icon={faHeart} className="bg-primary text-white hover:bg-white hover:text-primary border border-solid border-primary rounded-full p-3 text-xl ease-in duration-300 right-3 bottom-14 float-right relative" />
@@ -34,7 +34,7 @@ const LikeItems = (props) => {
                         <div className='py-2'>
                             <div className="flex items-center pb-2 sm:mt-2">
                                 {likeItem?.sale_price ? <span className='line-through text-sm sm:text-base mr-1 mb-0.5 flex-shrink-0 whitespace-nowrap font-normal text-primary'>€ {likeItem.sale_price}</span> : ''}
-                                <span className='text-base sm:text-xl flex-shrink-0 whitespace-nowrap font-medium text-primary'>€ {likeItem.price}</span>
+                                <span className='text-base sm:text-xl flex-shrink-0 whitespace-nowrap font-medium text-primary'>€ {likeItem.price === null ? likeItem.parent.price : likeItem.price}</span>
                             </div>
                             <span className='mt-2 block text-sm font-light uppercase'>{likeItem.marche}</span>
                             <div className="mb-3 min-h-8">

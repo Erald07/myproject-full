@@ -15,7 +15,7 @@ const SliderItem = (props) => {
                     <div className="relative py-2">
                         <div className="flex items-center sm:mt-2 pb-2">
                             <div className="flex items-center">
-                                <span className='text-primary font-normal text-sm sm:text-base mr-1'>€ {item.price}</span>
+                                <span className='text-primary font-normal text-sm sm:text-base mr-1'>€ {item.price === null ? item.parent.price : item.price}</span>
                             </div>
                         </div>
                         <span className='mt-2 block text-sm font-light uppercase'>{item.marche}</span>
