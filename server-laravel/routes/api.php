@@ -21,6 +21,8 @@ Route::get('/categoria-prodotto/{cateName}/{subCateName}/{subSubCateName}/{subSu
 
 Route::get('/prodotto/{title}', [ItemController::class, 'item']);
 
+Route::get('/modal-search', [ItemController::class, 'specialItems']);
+
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('/logout', [UserController::class, 'logout']);
 });
