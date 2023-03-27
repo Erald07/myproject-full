@@ -2,9 +2,11 @@
 
 namespace App\Models;
 
-use App\Utilities\FilterBuilder;
+use App\Filters\ItemFilter;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
+
 
 class Item extends Model
 {
@@ -32,6 +34,11 @@ class Item extends Model
         'colore'
     ];
 
+    public function parent()
+    {
+        return $this->belongsTo(Item::class, 'id', 'parent_id')->with('parent');
+    }
+
     
     public function categories()
     {
@@ -43,11 +50,8 @@ class Item extends Model
         return $this->hasMany(Gallery::class, 'item_id');
     }
 
-    public function scopeFilterBy($query, $filters)
+    public function scopeFilter(Builder $builder, $request)
     {
-        $namespace = 'App\Utilities\ItemFilters';
-        $filter = new FilterBuilder($query, $filters, $namespace);
-
-        return $filter->apply();
+        return (new ItemFilter($request))->filter($builder);
     }
 }
