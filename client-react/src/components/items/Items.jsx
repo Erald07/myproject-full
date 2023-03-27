@@ -21,7 +21,6 @@ const properties = {
 export default function Items(props){
     const {data} = props;
     const {addCart} = useContext(ContextCart);
-
     const [currentItems,setCurrentItems] = useState([]);
     const [pageCount, setPageCount] = useState(0);
     const [itemOffset, setItemOffset] = useState(0);
@@ -40,7 +39,6 @@ export default function Items(props){
         window.sessionStorage.setItem("cate_name", params.getcate);
     },[params, itemOffset, itemsPerPage, data]);
 
-    // Invoke when user click to request another page.
     const handlePageClick = (event) => {
         const newOffset = (event.selected * itemsPerPage) % data.length;
         window.sessionStorage.setItem("page", newOffset);
@@ -52,8 +50,8 @@ export default function Items(props){
         <div className="pb-8 md:pb-16">
         <div className="items container py-8 md:py-12 mx-auto">
             <div className="flex flex-wrap">
-            {currentItems?.map((item, i) => {
-                // console.log(item);
+            {currentItems.length !== 0 ?
+            currentItems?.map((item, i) => {
                 return(
                     <div key={i} className="card px-2 block w-1/2 xs:w-1/2 lg:w-1/3 xl:w-1/4 bg-white hover:scale-105 hover:shadow-lg hover:ease-out duration-500">
                         <div className="image w-full border-solid border-gray-200 border">
@@ -73,12 +71,12 @@ export default function Items(props){
                                     ""
                                 }
                             </div>
-                            {(item?.image_name?.split(',')).length >= 2 ? 
+                            {item?.galleries?.length !== 0 ? 
                                 <Slide autoplay={false} duration={1000} transitionDuration={300} {...properties}>
-                                    {item?.image_name?.split(',').map((img) => <Link key={item.id} to={`/prodotto/${item.title}`}><img src={img} alt="Image" className="relative block w-full" /></Link>)}
+                                    {item?.galleries[0]?.image_name?.split(',').map((img) => <Link key={item.id} to={`/prodotto/${item.title}`}><img src={img} alt="Image" className="relative block w-full" /></Link>)}
                                 </Slide>
                                 :
-                                <Link key={item.id} to={`/prodotto/${item.title}`}><img src={item.image_name} alt="Image" /></Link>
+                                <Link key={item.id} to={`/prodotto/${item.title}`}><img src={item?.image_link} alt="Image" /></Link>
                             }
                             <div className="wishlist hidden">
                                 <FontAwesomeIcon icon={faHeart} className="bg-primary text-white hover:bg-white hover:text-primary border border-solid border-primary rounded-full p-3 text-xl ease-in duration-300 right-3 bottom-14 float-right relative" />
@@ -87,15 +85,15 @@ export default function Items(props){
                         <div className="py-2">
                             <div className="py-2 flex items-center justify-between">
                                 <div className="text-primary flex items-center">
-                                    {item?.price ? 
-                                        <h6 className={item?.sale_price ? 'line-through font-normal text-sm sm:text-base mr-1 mb-1 leading-none' : 'font-medium text-base sm:text-xl leading-none whitespace-nowrap'}>&#8364; {item?.price}</h6>
+                                    {item?.sale_price !== null ? 
+                                        <h6 className={'line-through font-normal text-sm sm:text-base mr-1 mb-1 leading-none'}>&#8364; {item?.sale_price}</h6>
                                         :
-                                        ""
+                                        ""                                    
                                     }
-                                    {item?.sale_price ?
-                                        <h5 className="ml-1 font-medium md:text-base lg:text-xl">&#8364; {item?.sale_price}</h5>
+                                    {item?.price !== null ?
+                                        <h5 className="ml-1 font-medium md:text-base lg:text-xl">&#8364; {item?.price}</h5>
                                         :
-                                        ""
+                                        <h5 className="ml-1 font-medium md:text-base lg:text-xl">&#8364; {item?.parent?.price}</h5>
                                     }
                                 </div>
                                 {item?.vip_price ? 
@@ -123,7 +121,12 @@ export default function Items(props){
                         </div>
                     </div>
                 );
-            })} 
+            })
+            :
+            <div className="container my-8 text-center">
+                <p className="text-xl text-primary">Non è stato trovato nessun prodotto che corrisponde alla tua selezione.</p>
+            </div>
+            }
             </div>
         </div>
         <ReactPaginate
