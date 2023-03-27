@@ -16,14 +16,13 @@ const Context = (props) => {
         const getCate = async () => {
             const result = await fetch('http://localhost:8000/api/categories');
             const cates = await result.json();
-            // console.log(cates.categories);
-            if(cates.status === 200){
+            if(cates.status === 200){   
                 setState(cates.categories);
             }
         }
 
         getCate();
-    }, []);
+    }, [])
 
     useEffect(()=> {
         const getSubCate = async () => {

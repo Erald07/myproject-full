@@ -9,12 +9,8 @@ import { CategoryContext } from "../contextCategory/CategoryContext";
 const CategoriesMobile = () => {
 
     const {state, getSubCategory, categoryHandler} = useContext(CategoryContext);
-    // const [state, setState] = useState([]);
-    // const [getCategory, setCategory] = useState();
-    // const [getSubCategory, setSubCategory] = useState([]);
     const [getSubSubCategory, setSubSubCategory] = useState([]);
     const [getSubSubSubCategory, setSubSubSubCategory] = useState([]);
-    // const [getImage, setImage] = useState([]);
 
     const [click2, setClick2] = useState(false);
     const [click3, setClick3] = useState(false);
@@ -38,33 +34,6 @@ const CategoriesMobile = () => {
         const found = getSubSubCategory[0]?.subcategory?.filter(item => item?.cate_name == subsubcategory)
         setSubSubSubCategory(found);
     }
-
-    // useEffect(() => {
-    //     const getCate = async () => {
-    //         const result = await fetch('http://localhost:8000/api/categories');
-    //         const cates = await result.json();
-    //         // console.log(cates.categories);
-    //         if(cates.status === 200){
-    //             setState(cates.categories);
-    //         }
-    //     }
-
-    //     getCate();
-    // }, []);
-
-
-    // useEffect(()=> {
-    //     const getSubCate = async () => {
-    //         const result = await fetch(`http://localhost:8000/api/categories/${getCategory}`);
-    //         const subcates = await result.json();
-    //         if(subcates.status === 200){
-    //             setSubCategory(subcates.subcategory);
-    //             setImage(subcates.subimage);
-    //         }
-    //     }
-
-    //     getSubCate();
-    // },[getCategory],[getImage]);
 
     function isEmpty(obj) { 
         if(Object.keys(obj).length > 0){
@@ -126,13 +95,11 @@ const CategoriesMobile = () => {
                                     })}
                                 />
                             }
-                            {/* <CategoryContext.Provider value={{getImage}}> */}
-                                <div className="bg-gray-100 min-h-fit pb-10 hidden last:block">
-                                    <div className="max-w-[270px] h-auto mx-auto pt-6">
-                                        <ImageDropdown />
-                                    </div>
+                            <div className="bg-gray-100 min-h-fit pb-10 hidden last:block">
+                                <div className="max-w-[270px] h-auto mx-auto pt-6">
+                                    <ImageDropdown />
                                 </div>
-                            {/* </CategoryContext.Provider> */}
+                            </div>
                             </React.Fragment>
                         );  
                     })} 
