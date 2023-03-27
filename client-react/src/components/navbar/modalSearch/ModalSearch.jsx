@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass, faCamera, faTimes } from '@fortawesome/free-solid-svg-icons';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import SpecialProducts from './SpecialProducts';
 import SearchProducts from './SearchProducts';
 
@@ -9,31 +9,26 @@ const ModalSearch = (props) => {
 
     const [specialItems, setSpecialItems] = useState([]);
     const [items, setItems] = useState([]);
-    const [query, setQuery] = useState("");
     const navigate = useNavigate();
 
-    const search = (data) => {
-        return data.filter( (item) => item.title.toLowerCase().includes(query))
-    }
+    const [searchParams, setSearchParams] = useSearchParams();
+    var query = searchParams.get('query');
 
-    // var urlElements = window.location.href.split('/');
-    // var url = '';
-    // for(let i = 0 ; i < urlElements.length ; i++){
-    //     url += urlElements[i];
-    // }
+    const handleChange = event => {
+        setSearchParams({query: event.target.value});
+    };
 
     useEffect(() => {
         const getItems = async () => {
             const result = await fetch(`http://localhost:8000/api/modal-search?query=${query}`);
-            const cates = await result.json();
-            if(cates.status === 200){
-                setSpecialItems(cates.special_items);
-                setItems(cates.search);
+            const items = await result.json();
+            if(items.status === 200){
+                setSpecialItems(items.special_items);
+                setItems(items.search);
             }
         }
-
         getItems();
-    }, []);
+    },[query]);
 
     return (
         <div>
@@ -47,14 +42,14 @@ const ModalSearch = (props) => {
                             <FontAwesomeIcon icon={faMagnifyingGlass} />
                         </div>
                         <div className="w-full ml-6">
-                            <input onChange={(e) => setQuery(e.target.value)} type="text" placeholder="Ricerca..." className="text-gray-500 bg-transparent text-left outline-none w-full" />
+                            <input value={query} onChange={handleChange} type="text" placeholder="Ricerca..." className="text-gray-500 bg-transparent text-left outline-none w-full" />
                         </div>
                         <div className="camera mr-2">
                             <FontAwesomeIcon icon={faCamera} />
                         </div>
                     </div>
                     <div className="close">
-                        <button onClick={() => navigate(-1)} className="items-center">
+                        <button onClick={() => navigate('/')} className="items-center">
                             <FontAwesomeIcon icon={faTimes} className='close-modal' />
                         </button>
                     </div>
@@ -78,10 +73,10 @@ const ModalSearch = (props) => {
                         </div>
                     </div>
                     <div className="w-4/5">
-                    {query === "" ?
+                    {query === null ?
                         <SpecialProducts specialItems={specialItems} />
                         :
-                        <SearchProducts specialItems={search(specialItems)} />
+                        <SearchProducts searchItems={items} />
                     }
                     </div>
                 </div>
