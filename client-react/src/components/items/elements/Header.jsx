@@ -37,7 +37,7 @@ const Header = (props) => {
                                             <img className='' src={item.image_link} alt="Image" />
                                         </div>
                                         <div className="info mx-4 pt-3">
-                                            <p className='text-primary text-base font-medium'>&#8364; {item.price},00</p>
+                                            <p className='text-primary text-base font-medium'>&#8364; {item?.price === null ? item?.parent?.price : item?.price}</p>
                                             <p className='uppercase text-sm text-light mt-1'>{item.marche}</p>
                                             <p className='text-sm font-medium leading-4'>{item.title}</p>
                                         </div>
