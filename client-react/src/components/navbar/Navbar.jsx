@@ -1,8 +1,7 @@
-import React, { Component, useState, useEffect } from "react";
-import { Transition } from "@headlessui/react";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLocationDot, faMagnifyingGlass, faBagShopping, faUser, faShoppingBag, faTimes, faCamera } from "@fortawesome/free-solid-svg-icons";
-import { NavLink, Link, useNavigate } from "react-router-dom";
+import { faLocationDot, faMagnifyingGlass, faBagShopping, faUser, faShoppingBag, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import SliderNavbar from "./sliderHeader/SliderNavbar";
 import Swal from "sweetalert2";
@@ -11,7 +10,6 @@ import LogoDesktop from "../logo/LogoDesktop";
 import CategoriesDesktop from "./category/CategoryDesktop";
 import CategoriesMobile from "./category/CategoryMobile";
 import Context from "./contextCategory/Context";
-import LogoFooter from "../logo/LogoFooter";
 
 function Nav(){
 
@@ -19,7 +17,6 @@ function Nav(){
 
     const [click1, setClick1] = useState(false);
     const [isShown, setIsShown] = useState(false);
-    const [showModal, setShowModal] = useState(false);
 
     const handleClick1 = () => setClick1(!click1);
     const Close1 = () => setClick1(false);
@@ -71,8 +68,6 @@ function Nav(){
         );
     }
 
-    // console.log(showModal);
-
     return (
         <Context>
         <>
@@ -117,7 +112,7 @@ function Nav(){
                     </a>
                 </div>
                 <div className="hidden lg:flex lg:p-2 lg:border-b lg:border-black lg:items-center">
-                    <Link to={'modal-searchcl'}><input type={'text'} /*onClick={() => setShowModal(!showModal)}*/ placeholder="Che prodotto stai cercando?" className="lg:focus:outline-none font-semibold placeholder:text-black xl:w-[35rem] lg:w-[20rem]" /></Link>
+                    <Link to={'modal-search'}><input type={'text'} placeholder="Che prodotto stai cercando?" className="lg:focus:outline-none font-semibold placeholder:text-black xl:w-[35rem] lg:w-[20rem]" /></Link>
                     <button type="submit" className="float-right">
                         <FontAwesomeIcon icon={faMagnifyingGlass} className='text-2xl ml-3' />
                     </button>
