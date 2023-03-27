@@ -17,5 +17,6 @@ class ItemFilter extends AbstractFilter
         'orderBy' => PriceFilter::class,
         'eta' => EtaFilter::class,
         'taglia' => TagliaFilter::class,
+        'query' => SearchFilter::class,
     ];
 }
