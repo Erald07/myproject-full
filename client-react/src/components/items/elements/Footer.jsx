@@ -9,20 +9,6 @@ import { faFacebook, faYoutube, faPinterest, faInstagram} from "@fortawesome/fre
 const Footer = () => {
     const {state} = useContext(CategoryContext);
     const [showModal, setShowModal] = React.useState(false);
-    // const [state, setState] = useState([]);
-    // useEffect(() => {
-    //     const getCate = async () => {
-    //         const result = await fetch('http://localhost:8000/api/categories');
-    //         const cates = await result.json();
-    //         // console.log(cates.categories);
-    //         if(cates.status === 200){
-    //             setState(cates.categories);
-    //         }
-    //     }
-
-    //     getCate();
-    // }, []);
-    // console.log(state);
     
     return (
         <>
@@ -35,7 +21,6 @@ const Footer = () => {
                     <div className='link uppercase text-gray-600 text-xs font-normal leading-6 flex flex-col'>
                         {state?.map((category, i) => {
                             return(
-                            // console.log(category);
                             <Link className='hover:decoration-solid hover:underline hover:underline-offset-2 decoration-primary' key={i} to={`categoria-prodotto/${category.cate_name}`} >{category.cate_name}</Link>
                             );
                         })}
