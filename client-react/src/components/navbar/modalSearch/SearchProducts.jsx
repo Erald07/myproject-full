@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 
-const SearchProducts = ({specialItems}) => {
+const SearchProducts = ({searchItems}) => {
     return (
         <div className='overflow-auto w-full mt-3 h-[550px]'>
             <div className='flex flex-wrap gap-3'>
-                {specialItems?.map((item, i) => (
+                {searchItems?.map((item, i) => (
                 <div className='w-1/4 h-1/4'>
                     <Link to={`/prodotto/${item.title}`}>
                         <div className='flex flex-col border border-solid border-gray-300 h-full hover:border-primary rounded-md'>
@@ -40,12 +40,14 @@ const SearchProducts = ({specialItems}) => {
                                         </div>
                                     </div>
                                     :
-                                    item.price ?
+                                    item.price === null ?
+                                    <div className="flex items-center">
+                                        <span className='font-normal text-sm sm:text-base mr-1'>€ {item.parent.price}</span>
+                                    </div>
+                                    :
                                     <div className="flex items-center">
                                         <span className='font-normal text-sm sm:text-base mr-1'>€ {item.price}</span>
                                     </div>
-                                    :
-                                    ''
                                     }
                                 </div>
                                 <div className="float-right mx-2 py-2 px-3 bg-primary text-white rounded-md opacity-90 hover:opacity-100">
