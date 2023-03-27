@@ -30,7 +30,6 @@ export default function ColoreFilter(props) {
             });
         }
     };
-
     const queryParams = new URLSearchParams(window.location.search);
     var marche = '';
     var genere = '';
