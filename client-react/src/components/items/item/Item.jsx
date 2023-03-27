@@ -1,10 +1,8 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBagShopping, faHeart, faInfoCircle, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
-import { Slide } from 'react-slideshow-image';
-import Carousel from 'react-grid-carousel';
 import SliderItem from './SliderItem';
 import LikeItems from './LikeItems';
 
@@ -29,14 +27,16 @@ function Item() {
     const [show2, setShow2] = useState(false);
     const {getTitle} = useParams();
 
+    console.log(sameMarche);
+
     useEffect(() => {
         const getItem = async () => {
             const result = await fetch(`http://localhost:8000/api/prodotto/${getTitle}`);
             const item = await result.json();
-            if(item.status === 200){
-                setItem(item?.item);
-                setLikeItems(item?.like_items);
-                setSameMarche(item?.same_marche);
+            if(item?.status === 200){
+                setItem(item.item);
+                setLikeItems(item.like_items);
+                setSameMarche(item.same_marche);
             }
         }
 
@@ -52,12 +52,23 @@ function Item() {
                         <div className='-mx-2 lg:-mx-3 lg:-mt-3'>
                             <div className='pb-8 lg:pb-0'>
                                 <div className='lg:w-full lg:flex-wrap flex'>
-                                    {item?.image_name?.split(',').map((img, i) =>                                             
-                                        <div key={i} className={i <= 3 ? 'lg:w-1/2 w-full px-2 sm:w-1/2 lg:p-3' : 'lg:w-1/5 w-full px-2 sm:w-1/2 lg:p-3'}>
-                                            <img src={img} alt="Image" className="border border-gray-300 w-full h-full" />
+                                    {item?.galleries?.length !== 0 ?
+                                        item?.galleries[0]?.image_name?.split(',').map((img, i) =>                                             
+                                            <div key={i} className={i <= 3 ? 'lg:w-1/2 w-full px-2 sm:w-1/2 lg:p-3' : 'lg:w-1/5 w-full px-2 sm:w-1/2 lg:p-3'}>
+                                                <img src={img} alt="Image" className="border border-gray-300 w-full h-full" />
+                                            </div>
+                                        )
+                                        :
+                                        <>
+                                        <div className={'lg:w-1/2 w-full px-2 sm:w-1/2 lg:p-3'}>
+                                            <img src={item.image_link} alt="Image" className="border border-gray-300 w-full h-full" />
                                         </div>
-                                    )}
-                                    {item?.image_name?.split(',').length % 2 === 1 && item?.image_name?.split(',').length <= 4 ? 
+                                        <div className='lg:w-1/2 w-full px-2 sm:w-1/2 lg:p-3'>
+                                            <img src={'https://storage.googleapis.com/prenatal-italy/2021/01/0773ff06-single-product-placeholder-300x400-1.jpg'} alt="Image" className="border border-gray-300 w-full h-full" />
+                                        </div>
+                                        </>
+                                    }
+                                    {item?.galleries[0]?.image_name?.split(',').length % 2 === 1 && item?.galleries[0]?.image_name?.split(',').length <= 4 ? 
                                     <div className='lg:w-1/2 w-full px-2 sm:w-1/2 lg:p-3'>
                                         <img src={'https://storage.googleapis.com/prenatal-italy/2021/01/0773ff06-single-product-placeholder-300x400-1.jpg'} alt="Image" className="border border-gray-300 w-full h-full" />
                                     </div>
@@ -75,7 +86,7 @@ function Item() {
                         <div className="mt-8 mb-8 lg:mb-0">
                             <div className={item?.vip_price ? 'flex flex-col pb-4 border-b border-secondary' : 'flex flex-col'}>
                                 <div className="flex gap-2 md:gap-4 mt-1">
-                                    <p className='text-primary font-normal text-3xl md:text-4xl'>€ {item?.price}</p>
+                                    <p className='text-primary font-normal text-3xl md:text-4xl'>€ {item?.price === null ? item?.parent?.price : item?.price}</p>
                                 </div>
                             </div>
                             {item?.vip_price ? 
