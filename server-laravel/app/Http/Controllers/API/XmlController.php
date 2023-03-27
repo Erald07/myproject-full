@@ -43,7 +43,7 @@ class XmlController extends Controller
                         "stock" => $data['stock'] ? $data['stock'] : NULL,
                         "availability" => $data['availability'] ? $data['availability'] : "NULL",
                         "taglia" => $data['taglia'] ? $data['taglia'] : "NULL",
-                        "parent_id" => $data['parent_id'] ? $data['parent_id'] : NULL,
+                        "parent_id" => $data['id'] == $data['parent_id'] ? '0' : $data['parent_id'],
                         "title" => $data['title'] ? $data['title'] : "NULL",
                         "description" => $data['description'] ? $data['description'] : "NULL",
                         "link" => $data['link'] ? $data['link'] : "NULL",
@@ -57,6 +57,10 @@ class XmlController extends Controller
                     ];
 
                     Item::insert($dataItem[$index]);
+                    // if(!(Item::where('title', $dataItem[$index]['title'])->exists()))
+                    // {
+                    //     Item::insert($dataItem[$index]);
+                    // } 
 
                 }
 
